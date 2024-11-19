@@ -1,4 +1,5 @@
-import type { ZodSchema, z } from "zod";
+import type { ZodSchema } from "zod";
+import { z } from "zod";
 
 export function validateEnv<T extends ZodSchema>(
 	schema: T,
@@ -14,3 +15,18 @@ export function validateEnv<T extends ZodSchema>(
 	}
 	return result.data;
 }
+
+// Custom methods
+const number = () =>
+	z.preprocess((v) => Number(v) || 0, z.number().int().nonnegative());
+const boolean = () => z.preprocess((v) => Boolean(v), z.boolean());
+
+const g = {
+	object: z.object,
+	enum: z.enum,
+	string: z.string,
+	number,
+	boolean,
+};
+
+export { g };

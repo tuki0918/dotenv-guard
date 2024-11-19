@@ -1,15 +1,14 @@
-import { z } from "zod";
-import { validateEnv } from "../src/index";
+import { g, validateEnv } from "../src/index";
 
 describe("Environment Validator", () => {
 	// Schema for testing
-	const schema = z.object({
-		NODE_ENV: z.enum(["development", "production", "test"]),
-		PORT: z.preprocess((v) => Number(v) || 0, z.number().int().nonnegative()),
-		DATABASE_URL: z.string().url(),
-		TRANSFORMED_VAR: z.string().transform((val) => val.toUpperCase()),
-		OPTIONAL_VAR: z.string().optional(),
-		BOOLEAN_FLAG: z.preprocess((v) => Boolean(v), z.boolean()),
+	const schema = g.object({
+		NODE_ENV: g.enum(["development", "production", "test"]),
+		PORT: g.number(),
+		DATABASE_URL: g.string().url(),
+		TRANSFORMED_VAR: g.string().transform((val) => val.toUpperCase()),
+		OPTIONAL_VAR: g.string().optional(),
+		BOOLEAN_FLAG: g.boolean(),
 	});
 
 	beforeAll(() => {

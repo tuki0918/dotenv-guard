@@ -1,26 +1,26 @@
 {
-  "name": "dotenv-guard",
-  "version": "1.0.0",
-  "description": "A lightweight environment variable validator and type generator using zod.",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "build": "tsc",
+	"name": "dotenv-guard",
+	"version": "1.0.0",
+	"description": "A lightweight environment variable validator and type generator using zod.",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"build": "tsc",
 		"check": "biome check .",
 		"check:fix": "biome check --write .",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
-  "dependencies": {
-    "@types/node": "^22.9.0",
-    "dotenv": "^16.4.5",
-    "ts-morph": "^24.0.0",
-    "typescript": "^5.6.3",
-    "zod": "^3.23.8"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "1.9.4"
-  }
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "MIT",
+	"dependencies": {
+		"@types/node": "^22.9.0",
+		"dotenv": "^16.4.5",
+		"ts-morph": "^24.0.0",
+		"typescript": "^5.6.3",
+		"zod": "^3.23.8"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4"
+	}
 }

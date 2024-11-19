@@ -1,12 +1,12 @@
 import { Project } from "ts-morph";
-import type { ZodSchema, ZodType, z } from "zod";
+import type { ZodSchema, z } from "zod";
 
 export const generateEnvTypes = (
 	schema: z.ZodTypeAny,
 	outputPath = "./types/env.d.ts",
 ) => {
 	// Parse schema and generate type definitions
-	const shape: ZodType = schema._def.shape();
+	const shape = schema._def.shape();
 	// environment variable key names
 	const keys = Object.keys(shape);
 

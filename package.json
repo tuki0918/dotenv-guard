@@ -1,14 +1,16 @@
 {
   "name": "dotenv-guard",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A lightweight environment variable validator and type generator using zod.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@types/node": "^22.9.0",
     "dotenv": "^16.4.5",

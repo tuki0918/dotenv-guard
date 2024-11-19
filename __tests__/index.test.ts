@@ -1,6 +1,5 @@
-import * as fs from "node:fs";
 import { z } from "zod";
-import { generateEnvTypes, validateEnv } from "../src/index";
+import { validateEnv } from "../src/index";
 
 describe("Environment Validator", () => {
 	// Schema for testing
@@ -50,31 +49,5 @@ describe("Environment Validator", () => {
 		process.env.NODE_ENV = undefined; // Remove required variable
 
 		expect(() => validateEnv(schema)).toThrow();
-	});
-
-	test("generateEnvTypes should create a valid TypeScript definition file", () => {
-		const outputPath = "./__tests__/__results__/env.d.ts";
-		generateEnvTypes(schema, outputPath);
-
-		// Check if the type definition file is generated
-		expect(fs.existsSync(outputPath)).toBe(true);
-
-		// Validate the content of the file
-		const generatedTypes = fs.readFileSync(outputPath, "utf-8");
-		expect(generatedTypes).toContain(
-			'NODE_ENV: "development" | "production" | "test";',
-		);
-		expect(generatedTypes).toContain("PORT: number;");
-		expect(generatedTypes).toContain("DATABASE_URL: string;");
-		expect(generatedTypes).toContain("TRANSFORMED_VAR: string;");
-		expect(generatedTypes).toContain("OPTIONAL_VAR?: string;");
-		expect(generatedTypes).toContain("BOOLEAN_FLAG: boolean;");
-
-		const snapshotPath = "./__tests__/__snapshots__/env.d.ts";
-		const snapshotGeneratedTypes = fs.readFileSync(snapshotPath, "utf-8");
-		expect(generatedTypes).toBe(snapshotGeneratedTypes);
-
-		// Delete the generated file
-		fs.unlinkSync(outputPath);
 	});
 });

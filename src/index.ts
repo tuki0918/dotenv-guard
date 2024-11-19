@@ -1,9 +1,5 @@
-import { config } from "dotenv";
 import { Project } from "ts-morph";
 import type { ZodSchema, ZodType, z } from "zod";
-
-// Load .env file
-config();
 
 export const generateEnvTypes = (
 	schema: z.ZodTypeAny,
@@ -65,8 +61,11 @@ export const generateEnvTypes = (
 };
 
 // Function to validate environment variables
-export function validateEnv<T extends ZodSchema>(schema: T): z.infer<T> {
-	const result = schema.safeParse(process.env);
+export function validateEnv<T extends ZodSchema>(
+	schema: T,
+	env: NodeJS.ProcessEnv = process.env,
+): z.infer<T> {
+	const result = schema.safeParse(env);
 	if (!result.success) {
 		console.error(
 			"Environment variable validation failed:",

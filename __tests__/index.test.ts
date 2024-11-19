@@ -67,6 +67,7 @@ describe("Environment Validator", () => {
 		expect(generatedTypes).toContain("PORT: number;");
 		expect(generatedTypes).toContain("DATABASE_URL: string;");
 		expect(generatedTypes).toContain("TRANSFORMED_VAR: string;");
+		expect(generatedTypes).toContain("OPTIONAL_VAR?: string;");
 		expect(generatedTypes).toContain("BOOLEAN_FLAG: boolean;");
 
 		const snapshotPath = "./__tests__/__snapshots__/env.d.ts";

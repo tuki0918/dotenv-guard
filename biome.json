@@ -7,7 +7,7 @@
 	},
 	"files": {
 		"ignoreUnknown": false,
-		"ignore": []
+		"ignore": ["node_modules/*", "__tests__/__snapshots__/*", "dist/*"]
 	},
 	"formatter": {
 		"enabled": true,
